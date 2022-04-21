@@ -1,5 +1,15 @@
 # CSS / Flexbox
 
+## flex
+flex의 기본 값은 `0(grow) 1(shrink) auto(basis)` 인데 `flex: 1;`을 설정하면 `flex: 1 1 0` 과 동일한 의미를 갖는다.
+
+flex container에서 모든 child element에 `flex: 1;`을 넣고/안넣고의 차이를 명확하게 보여주는 그림이 있다.
+
+<img src="https://drafts.csswg.org/css-flexbox/images/rel-vs-abs-flex.svg" />
+Image Source: <a href="https://drafts.csswg.org/css-flexbox/images/rel-vs-abs-flex.svg">https://drafts.csswg.org</a>
+
+위의 그림에서 위쪽은 child element에 각각 `flex: 1 혹은 2;` 을 설정한 경우이고 아래쪽은 별도의 flex 설정 없는 상황이다. 위쪽은 모든 child element가 `flex-basis: 0;`으로 설정이 됐기 때문에 각각 최소한의 영역만 차지하고 동시에 `flex-grow: 1` 이기 때문에 각각 비율에 맞게 빈 영역을 차지하게 되는 상황인 것이다. 아래쪽은 `flex-grow: 0; flex-basis: auto;`이기 때문에 각각 최소한의 영역을 차지한 후 
+
 ## flex-basis, flex-shrink, flex-grow
 
 Flexbox는 자손들에게 `width: fit-content;` 과 같은 효과를 자동으로 적용시킨다.(flex-direction이 기본이라는 가정)
@@ -52,3 +62,4 @@ flex-shrink: 0.6;
 - [MDN - Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
 - [MDN - flex-basis](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis)
 - [MDN - flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
+- [drafts-csswg - css-flexbox](https://drafts.csswg.org/css-flexbox/#propdef-flex)
