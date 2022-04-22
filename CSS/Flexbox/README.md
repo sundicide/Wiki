@@ -14,7 +14,7 @@ flex의 기본 값은 `0(grow) 1(shrink) auto(basis)` 인데 `flex: 1;`을 설�
 // <img src="https://drafts.csswg.org/css-flexbox/images/rel-vs-abs-flex.svg" />
 // Image Source: <a href="https://drafts.csswg.org/css-flexbox/images/rel-vs-abs-flex.svg">https://drafts.csswg.org</a>
 
-// 위의 그림에서 위쪽은 child element에 각각 `flex: 1 혹은 2;` 을 설정한 경우이고 아래쪽은 별도의 flex 설정 없는 상황이다. 위쪽은 모든 child element가 `flex-basis: 0;`으로 설정이 됐기 때문에 각각 최소한의 영역만 차지하고 동시에 `flex-grow: 1` 이기 때문에 각각 비율에 맞게 빈 영역을 차지하게 되는 상황인 것이다. 아래쪽은 `flex-grow: 0; flex-basis: auto;`이기 때문에 각각 최소한의 영역을 차지한 후 
+// 위의 그림에서 위쪽은 child element에 각각 `flex: 1 혹은 2;` 을 설정한 경우이고 아래쪽은 별도의 flex 설정 없는 상황이다. 위쪽은 모든 child element가 `flex-basis: 0;`으로 설정이 됐기 때문에 각각 최소한의 영역만 차지하고 동시에 `flex-grow: 1` 이기 때문에 각각 비율에 맞게 빈 영역을 차지하게 되는 상황인 것이다. 아래쪽은 `flex-grow: 0; flex-basis: auto;`이기 때문에 각각 최소한의 영역을 차지한 후
 ```
 
 ## flex-basis, flex-shrink, flex-grow
@@ -65,6 +65,22 @@ flex-shrink: 0.6;
 ```
 
 `flex-shrink` 값이 `2`라는 것은 값이 `1(default)`인 다른 flex-item에 비해 2배의 속도로 빠르게 shrink된다는 의미이고, `0`은 shrink하지 않는다는 의미이다.
+
+## flex-wrap
+
+flex에서 `line-wrap` 처럼 동작하는 속성으로 child size가 container영역을 벗어나면 개행시켜서 보여줄 수 있도록 한다.
+
+`flex-wrap: wrap;`을 사용하면 된다. 사용할 때 `flex-basis`와 `max-width`를 같이 사용하면 더 좋다. 개행이 생길 때 flex-basis에 맞게 개행이 생기고 또 flex-grow에 의해 item이 너무 커지는 것을 방지할 수 있기 때문이다.
+
+## flex-direciton
+
+`flex-direction`에는 reverse 류가 존재 하는데(`row-revese`, `column-reverse`) 이는 visual order만 변경한다는 것에 주의해야 한다.
+
+이 말은 keyboard navigation을 하는 user에게는 DOM에 선언된 그대로(direction reverse와 무관하게) navigation이 된다는 것이다.
+
+이를 이용하면 tab order를 변경할 수 있는데, 예를 들어 왼쪽엔 TOC가 오른쪽에는 contents들이 있는 blog layout이 있다고 하자. 이때 DOM에서는 TOC가 먼저, contents가 그 다음에 오도록 하지만, keyboard navigation에서는 contents가 바로 잡히도록 하려면 어떻게 해야 할까? <br />
+=> DOM에서 contents를 먼저, TOC를 나중에 오도록 한 뒤 `row-reverse`로 visual order를 바꿔주면 된다.
+
 
 ## Links
 - [MDN - Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
