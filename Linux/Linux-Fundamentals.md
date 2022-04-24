@@ -91,6 +91,56 @@ man --help # short info
 3. {command} —help
 4. /usr/share/doc
 
+
+# Lesson3: Essential File Management Tools
+
+## Understanding the Linux FIle System Hierarchy
+모든 Linux file system은 `/`로 시작한다.
+`/`는 root dir이며 모든 것들의 시작 점이다.
+
+하위에는 여러 것들이 있는데
+- bin: binaries
+- home: home dir
+- var: log files 등등
+- usr: user, program files
+
+Linux File system에서 중요한 컨셉 중에 하나는 mount이다.
+mount: storage device를 separate dir에 붙이는 것을 의미한다.
+
+mount를 하면 특정 폴더를 해당 storage에 넣을 수 있다.
+storage를 root 폴더에 넣기 위해서는 mount를 한다.
+mount는 network를 통해서도 가능하다.(NFS 등등)
+
+`/`내 폴더들을 좀 더 자세하게 살펴보면
+binary files는 `bin`과 `sbin`에 들어가는데 bin은 `regular binaries`, sbin은 `system binaries`가 들어간다. 그래서 sbin은 root command 들, bin은 regular user commands가 들어간다.
+
+`/boot`는 booting을 위해 쓰인다. 폴더 내부를 보면 linux kernel 파일(vmlinuz~~)이 존재하는데 linux system의 심장에 해당한다.
+
+`/dev`는 device를 위해 쓰이며 hardware에 access를 할 수 있게 해준다. sda는 hard disk이고 sda1, sda2 등으로 hard disk partition이 보인다.
+
+`/etc`는 configuration file들이 들어 있다. 내부에는 대게 볼 수 있는 파일들이 있는데 `os-release` 파일을 보면 Linux service에 존재하는 current version에 대한 설명들이 들어 있다.
+`passwd` 파일에는 등록된 유저들에 대한 정보가 담겨있다.
+
+`/home`은 user별 home dir이 들어 있다.
+
+`/media`와 `/mnt`는 일반적으론 쓰이지 않는다. mount를 위해 쓰인다.
+
+`/opt`는 application을 위해 쓰이는데 종종 비어 있다.
+
+`/proc`은 linux kernel 에 대한 정보가 들어 있다. linux 시스템에 대한 자세한 정보를 알고 싶을 때 볼 수 있다. 예를 들면 **cpuinfo** 를 보면 cpu에 대한 자세한 정보가 들어 있다. **meminfo** memory information을 볼 수 있다.
+
+`/root`는 root user의 home dir이다.
+
+`/run`은 new temp dir이다.
+
+`/srv`는 보통 비어 있다. services라는 의미인데 service를 위한 document roots로 사용할 수 있다.
+
+`/sys`는 hardware information이 들어 있다.
+
+`/tmp`는 temp dir인데 old dir이다. reboot할 때마다 지워진다.
+
+`/var` OS에 의해 사용되는 폴더인데 자주 사용되는 폴더는 `/var/log`이다.
+
 ## cp
 
 copy
